@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+
+/* Shared across every SovereignX frontend — see
+   frontend/shared/theme/tokens.css. Do not add color values here. */
+@import "../../shared/theme/tailwind-mapping.css";
+@import "../../shared/theme/tokens.css";

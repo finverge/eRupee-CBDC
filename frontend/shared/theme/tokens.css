@@ -1,0 +1,59 @@
+/**
+ * Finverge SovereignX — base brand theme tokens.
+ *
+ * Structurally identical to Finverge LOS's frontend/shared/theme/tokens.css
+ * (D:\Finverge\Code\DLP\LOS) — same neutral-scale approach, same shadow
+ * treatment, same dark-sidebar mechanism — with SovereignX's own brand
+ * hue substituted: Sovereign Navy #0B2447 / Ledger Teal #1E8F6F, matching
+ * every BRD/FSD/HLD diagram and both decks for this product.
+ *
+ * This is the SINGLE source of truth for color tokens across every
+ * SovereignX frontend (console today; wallet-sdk demo, future portals).
+ * Import this file — never hardcode a hex value in a component.
+ */
+:root {
+    --background: oklch(0.975 0.006 255);
+    --foreground: oklch(0.24 0.04 255);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.24 0.04 255);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.24 0.04 255);
+    --primary: #0B2447;
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.955 0.008 255);
+    --secondary-foreground: #0B2447;
+    --muted: oklch(0.955 0.008 255);
+    --muted-foreground: oklch(0.52 0.03 255);
+    --accent: #1E8F6F;
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.90 0.011 255);
+    --input: oklch(0.90 0.011 255);
+    --ring: #1E8F6F;
+    --chart-1: #0B2447;
+    --chart-2: #1E8F6F;
+    --chart-3: #1C7ED6;
+    --chart-4: oklch(0.75 0.16 80);
+    --chart-5: oklch(0.62 0.20 25);
+    --radius: 0.75rem;
+    --sidebar: oklch(1 0 0);
+    --sidebar-foreground: oklch(0.24 0.04 255);
+    --sidebar-primary: #0B2447;
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.955 0.008 255);
+    --sidebar-accent-foreground: #0B2447;
+    --sidebar-border: oklch(0.90 0.011 255);
+    --sidebar-ring: #1E8F6F;
+}
+
+/* Fixed dark-navy sidebar chrome (same convention as Mandate360's
+   staff-portal/mandate360-portal index.css) — the persistent left nav
+   uses these regardless of light/dark content-area mode. */
+:root {
+  --sidebar: #0B2447;
+  --sidebar-foreground: #c7cbe6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(255, 255, 255, 0.07);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+}

@@ -1,0 +1,24 @@
+/* Sahyadri Grameen Bank's own brand override of the SDK's theming
+   contract — this is the ENTIRE re-skin; no SDK component code changes. */
+:root {
+  --sx-wallet-primary: #6d28d9;
+  --sx-wallet-primary-foreground: #ffffff;
+  --sx-wallet-accent: #f59e0b;
+  --sx-wallet-surface: #ffffff;
+  --sx-wallet-surface-muted: #f3ecff;
+  --sx-wallet-border: #e4d9fb;
+  --sx-wallet-text: #1f1147;
+  --sx-wallet-text-muted: #6b5b95;
+  --sx-wallet-success: #16a34a;
+  --sx-wallet-danger: #dc2626;
+  --sx-wallet-radius: 1rem;
+  --sx-wallet-font: Georgia, "Times New Roman", serif;
+}
+
+body {
+  margin: 0;
+}
+
+.sx-wallet-card {
+  box-shadow: 0 1px 3px rgba(109, 40, 217, 0.08);
+}

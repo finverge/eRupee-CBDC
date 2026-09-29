@@ -1,0 +1,23 @@
+{
+  "name": "@finverge/sovereignx-wallet-sdk",
+  "version": "0.1.0",
+  "description": "Embeddable, themeable e₹ wallet components for a sponsor bank/NBFC's own app — Finverge SovereignX Release 1 (FSD Section 6, 9.6).",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^25.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "~5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,85 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+    # No host port published deliberately — this machine already has a
+    # native Postgres service bound to localhost:5432 (see the
+    # local-postgres-instance project memory). The two backend containers
+    # reach this one over the compose network as "postgres:5432"; nothing
+    # outside the compose network needs to reach it. If you need a host
+    # client (psql, a GUI tool) against this containerized instance
+    # specifically, add "55432:5432" here and connect to that port instead.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  erupee-ledger-simulator:
+    build:
+      context: services/erupee-ledger-simulator
+    environment:
+      ERUPEE_LEDGER_SIM_DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/erupee_ledger_simulator
+    ports:
+      - "8401:8401"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  sovereignx-core:
+    build:
+      context: services/sovereignx-core
+    environment:
+      SOVEREIGNX_CORE_DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/sovereignx_core
+      SOVEREIGNX_CORE_LEDGER_SIM_URL: http://erupee-ledger-simulator:8401
+    ports:
+      - "8402:8402"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      erupee-ledger-simulator:
+        condition: service_started
+
+  sovereignx-console:
+    build:
+      context: .
+      dockerfile: frontend/sovereignx-console/Dockerfile
+    ports:
+      - "5401:80"
+    depends_on:
+      - sovereignx-core
+
+  wallet-sdk-demo:
+    build:
+      context: .
+      dockerfile: frontend/wallet-sdk-demo/Dockerfile
+    ports:
+      - "5402:80"
+    depends_on:
+      - erupee-ledger-simulator
+
+  agent-app:
+    build:
+      context: .
+      dockerfile: frontend/agent-app/Dockerfile
+    ports:
+      - "5403:80"
+    depends_on:
+      - erupee-ledger-simulator
+
+  ussd-simulator:
+    build:
+      context: .
+      dockerfile: frontend/ussd-simulator/Dockerfile
+    ports:
+      - "5404:80"
+    depends_on:
+      - erupee-ledger-simulator
+
+volumes:
+  pgdata:

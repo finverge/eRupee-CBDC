@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Matches the "@sdk" alias in vite.config.ts — Vite's resolve.alias
+       only affects the dev server/bundler, not tsc, so this is needed
+       separately for `tsc -b` (npm run build) to type-check the import.
+       No "baseUrl" — deprecated in this TS version; "paths" alone
+       resolves fine under moduleResolution: "bundler". */
+    "paths": {
+      "@sdk/*": ["../../sdk/wallet-sdk/src/*"]
+    },
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}

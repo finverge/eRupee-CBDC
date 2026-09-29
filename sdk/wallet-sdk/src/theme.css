@@ -1,0 +1,36 @@
+/**
+ * Theming contract (FSD Section 9.6) — the ONLY thing every SDK component
+ * reads for color/type. A host bank app overrides these on any ancestor
+ * element (e.g. the div it mounts the SDK into) to fully re-skin every
+ * component with zero code changes — the same "swap a stylesheet, not a
+ * component" contract as Finverge's own internal LOS theme system, just
+ * scoped to these SDK-prefixed variables instead of the console's own.
+ *
+ * These defaults are intentionally neutral (not SovereignX-branded) —
+ * SovereignX branding must never appear inside a bank's consumer app.
+ */
+:root {
+  --sx-wallet-primary: #1f2937;
+  --sx-wallet-primary-foreground: #ffffff;
+  --sx-wallet-accent: #2563eb;
+  --sx-wallet-surface: #ffffff;
+  --sx-wallet-surface-muted: #f3f4f6;
+  --sx-wallet-border: #e5e7eb;
+  --sx-wallet-text: #111827;
+  --sx-wallet-text-muted: #6b7280;
+  --sx-wallet-success: #16a34a;
+  --sx-wallet-danger: #dc2626;
+  --sx-wallet-radius: 0.75rem;
+  --sx-wallet-font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.sx-wallet {
+  font-family: var(--sx-wallet-font);
+  color: var(--sx-wallet-text);
+}
+.sx-wallet-card {
+  background: var(--sx-wallet-surface);
+  border: 1px solid var(--sx-wallet-border);
+  border-radius: var(--sx-wallet-radius);
+  padding: 1.25rem;
+}
