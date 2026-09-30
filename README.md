@@ -4,6 +4,12 @@ Government & Subsidy Orchestration + Retail Banking, built together (see
 `D:\Finverge\Docs\Products\eRupee-CBDC\BRD\Finverge_SovereignX_BRD_v1.2.docx`
 and the accompanying FSD/HLD for the full spec this implements).
 
+Demo-ready architecture and flow diagrams — system architecture, subsidy
+disbursement, subsidy withdrawal, and the compliance/fraud alert flow —
+are at `D:\Finverge\Docs\Products\eRupee-CBDC\Diagrams\` (PDF, A3
+landscape). Each PDF also exists as a live, clickable artifact; ask for
+those links if you need the interactive version rather than the PDF.
+
 Same theme, component conventions, and service patterns as Mandate360
 (`D:\Finverge\Code\DLP\LOS`) — dark-navy sidebar shell, shadcn/ui +
 Tailwind v4 with a shared CSS-variable token system, FastAPI + SQLAlchemy
